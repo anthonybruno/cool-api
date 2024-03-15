@@ -23,7 +23,7 @@ async function spotifyAccessToken() {
 
 async function spotifyCurrentlyPlaying() {
   const response = await fetch(
-    'https://api.spotify.com/v1/me/player/currently-playingg',
+    'https://api.spotify.com/v1/me/player/currently-playing',
     {
       headers: {
         Authorization: `Bearer ${spotifyBearerToken}`,
@@ -38,7 +38,6 @@ async function spotifyCurrentlyPlaying() {
 
 function formatSpotifyData(data: any) {
   const i = data.item;
-  console.log(i);
   return {
     track: i.name,
     album: i.album.name,
