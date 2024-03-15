@@ -31,12 +31,7 @@ async function spotifyCurrentlyPlaying() {
     }
   );
 
-  if (!response.ok) {
-    // const message = `An error has occured: ${response.status}`;
-    // throw new Error(message);
-    return false;
-  }
-
+  if (!response.ok) return false;
   const data = await response.json();
   return data;
 }

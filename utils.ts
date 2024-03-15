@@ -22,7 +22,7 @@ export function getSavedData() {
 }
 
 export function runScheduler() {
-  Schedule.scheduleJob(everyFewSeconds, () => {
+  Schedule.scheduleJob(workHours, () => {
     getNewSong();
   });
 
