@@ -31,7 +31,7 @@ Cool API is my special little friend that fetches current weather information an
 - Go to the [Spotify Developers Dashboard](https://developer.spotify.com/dashboard/login) and sign up for an account.
 - When you're all signed up, you'll get to the Spotify Developers Dashboard that shows your applications. Click "Create An App".
 - Follow the prompts and select Non-Commercial
-- When you log in, you should be able to see your Client ID. Underneath it, you can click to see your Client Secret. Store these in the `.env` file using the config below.
+- When you log in, you should be able to see your `CLIENT_ID`. Underneath it, you can click to see your `CLIENT_SECRET`. Store these in the `.env`.
 
 ### Spotify application setup
 
@@ -44,7 +44,7 @@ Cool API is my special little friend that fetches current weather information an
 - This is where Spotify sends us after we've logged in. They send us to the URL that we supply, but also give us back an authorization code. We use that authorization code to get an access and refresh token.
 - If you have a website, you can put any URL from your domain here, and Spotify will redirect us there after logging in.
 - If you don't have a website, again- that's OK, we can use `http://google.com/callback` or something, but do understand that the domain that owns the website that we redirect to is fully capable of reading the authorization code we receive.
-- Whatever you've provided as the Redirect URL, make sure to update the `.env` with this as well.
+- Whatever you've provided as the `REDIRECT_URL`, make sure to update the `.env` with this as well.
 
 ### Getting the initial Authorization Code
 
@@ -58,10 +58,9 @@ scope=user-read-private%20user-read-currently-playing`
 
 ### Using the Authorization Code to get an Access Token and the Refresh Token
 
-- In the root of the repository, run the following script with the code you copied from the URL.
-- `npx tsx refreshToken.ts`
+- In the root of the repository, run the following script: `npx tsx refreshToken.ts`
 - This will ask for a permanent refresh token that we can use to make subsequent requests to the API and never have to worry about logging in again.
-- Copy the refresh token that was emitted to the console into the `.env` file.
+- Copy the `REFRESH_TOKEN` that was emitted to the console into the `.env` file.
 
 ### Get a weather key
 
@@ -70,9 +69,15 @@ scope=user-read-private%20user-read-currently-playing`
 
 ### Start the app
 
+Now it's time to get things going:
+
 - `npm run dev`
 - 🌭
 - `https://localhost:3000`
+
+### Deployment
+
+If you'd like there's a `npm run build` that'll package everything up in a `dist` folder.
 
 ## Big thanks
 
