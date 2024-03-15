@@ -6,7 +6,7 @@ import { getSavedData, runScheduler, evalColdStart } from './utils';
 dotenv.config();
 
 const app: Application = express();
-const port = process.env.PORT || 2222;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 
