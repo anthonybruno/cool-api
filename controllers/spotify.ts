@@ -23,19 +23,27 @@ async function spotifyAccessToken() {
 
 async function spotifyCurrentlyPlaying() {
   const response = await fetch(
-    'https://api.spotify.com/v1/me/player/currently-playing',
+    'https://api.spotify.com/v1/me/player/currently-playingg',
     {
       headers: {
         Authorization: `Bearer ${spotifyBearerToken}`,
       },
     }
   );
+
+  if (!response.ok) {
+    // const message = `An error has occured: ${response.status}`;
+    // throw new Error(message);
+    return false;
+  }
+
   const data = await response.json();
   return data;
 }
 
 function formatSpotifyData(data: any) {
   const i = data.item;
+  console.log(i);
   return {
     track: i.name,
     album: i.album.name,
@@ -58,6 +66,6 @@ export async function getNewSong() {
   if (spotifyBearerToken === undefined) await spotifyAccessToken();
 
   spotifyCurrentlyPlaying().then((res) => {
-    saveSong(formatSpotifyData(res));
+    if (res) saveSong(formatSpotifyData(res));
   });
 }

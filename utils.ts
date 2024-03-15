@@ -4,7 +4,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { getNewSong } from './controllers/spotify';
 import { getNewWeather } from './controllers/weather';
 
-const everyFewSeconds = '*/5 * * * * *';
+const everyFewSeconds = '*/15 * * * * *';
 const workHours = '*/10 9-17 * * 1-5'; // 10mins 9am-5pm * * M-F
 const everyTenMinutes = '*/10 * * * *';
 
@@ -22,7 +22,7 @@ export function getSavedData() {
 }
 
 export function runScheduler() {
-  Schedule.scheduleJob(workHours, () => {
+  Schedule.scheduleJob(everyFewSeconds, () => {
     getNewSong();
   });
 
