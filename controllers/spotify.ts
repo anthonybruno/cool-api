@@ -51,7 +51,6 @@ function formatSpotifyData(data: any) {
 }
 
 function saveSong(formattedSong: any) {
-  console.log('saveSong');
   const jsonData = JSON.stringify(formattedSong);
   fs.writeFile('savedSong.json', jsonData, 'utf8', (err) => {
     if (err) console.log(err);
