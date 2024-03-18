@@ -31,7 +31,8 @@ async function spotifyCurrentlyPlaying() {
     }
   );
 
-  if (!response.ok) return false;
+  if (response.status !== 200) return false;
+
   const data = await response.json();
   return data;
 }
@@ -50,6 +51,7 @@ function formatSpotifyData(data: any) {
 }
 
 function saveSong(formattedSong: any) {
+  console.log('saveSong');
   const jsonData = JSON.stringify(formattedSong);
   fs.writeFile('savedSong.json', jsonData, 'utf8', (err) => {
     if (err) console.log(err);
