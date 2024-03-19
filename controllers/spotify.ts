@@ -58,8 +58,7 @@ function saveSong(formattedSong: any) {
 }
 
 export async function getNewSong() {
-  if (spotifyBearerToken === undefined) await spotifyAccessToken();
-
+  await spotifyAccessToken();
   spotifyCurrentlyPlaying().then((res) => {
     if (res) saveSong(formatSpotifyData(res));
   });
